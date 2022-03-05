@@ -79,7 +79,16 @@ public class US94_VerifyErrorMessages {
 //     Verify repeat checkbox is selected
         Assert.assertTrue(repeatCheckbox.isSelected(), "Repeat checkbox verification is failed");
 
-//    Locating Input Box
+
+
+
+
+
+        //      #2  Testcase   "  Verify 2 error messges Displayed  x<1 || x>99 "
+
+
+
+//     Locating Input Box
         WebElement inputBox = Driver.getDriver().findElement(By.xpath("//input[@data-validation='{\"NotBlank\":{},\"Number\":{\"min\":1,\"max\":99},\"Type\":{\"type\":\"integer\"}}']"));
         inputBox.clear();
 
@@ -89,39 +98,58 @@ public class US94_VerifyErrorMessages {
         inputBox.sendKeys("-2");
 */
 
-//     User enter an INVALID integer (x<1 || x>99)
+//      User enter an INVALID integer (   x<1  )
         inputBox.sendKeys("-2" + Keys.ENTER);
-
 
         BrowserUtils.sleep(2);
 
 
 
+        WebElement firstErrorMessage =Driver.getDriver().findElement(By.xpath("//span[text()='The value have not to be less than 1.']"));
 
-//      #2  Testcase   "  Verify 2 error messges Displayed   "
-
-
-
-//     Verify first Error Message "This value should not be blank."
-        WebElement firstErrorMessage =Driver.getDriver().findElement(By.xpath("//span[text()='This value should not be blank.']"));
-
+//     Verify first Error Message "The value have not to be less than 1."
         Assert.assertTrue(firstErrorMessage.isDisplayed());
 
 
+
+
+
+
+
+ //     Verify Second Error Message " The value have not to be more than 99."
+
+
+
+//    Locating Input Box
+        inputBox = Driver.getDriver().findElement(By.xpath("//input[@data-validation='{\"NotBlank\":{},\"Number\":{\"min\":1,\"max\":99},\"Type\":{\"type\":\"integer\"}}']"));
+        inputBox.clear();
+
+
+//      User enter an INVALID integer ( x>99 )
+        inputBox.sendKeys("100" + Keys.ENTER);
+
+
         BrowserUtils.sleep(2);
 
 
-//     Verify first Error Message "The value have not to be less than 1."
-        WebElement secondErrorMessage =Driver.getDriver().findElement(By.xpath("//span[text()='The value have not to be less than 1.']"));
 
+        WebElement secondErrorMessage =Driver.getDriver().findElement(By.xpath("//span[text()='The value have not to be more than 99.']"));
+
+        //     Verify Second Error Message "The value have not to be more than 99."
         Assert.assertTrue(secondErrorMessage.isDisplayed());
+
+
+
+
+
+
 
 
     }
 
     @AfterMethod
     public void tearDown() {
-               Driver.closeDriver();
+          //     Driver.closeDriver();
     }
 
 }
