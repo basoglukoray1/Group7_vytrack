@@ -1,6 +1,6 @@
 package com.vytrack.tests;
 
-public class US96_VehicleOndometer {
+public class US96_VehicleOdometer {
 
     //test
 
