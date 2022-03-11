@@ -22,7 +22,7 @@ public class US92_SelectVehicle {
 
 
     @Test
-    public void TC1driverViewUncheckedChkboxes() {
+    public void TC1driverViewUncheckedChkboxes() {//
 
         Driver.getDriver().get(ConfigurationReader.getProperty("env1"));
         // pass username
