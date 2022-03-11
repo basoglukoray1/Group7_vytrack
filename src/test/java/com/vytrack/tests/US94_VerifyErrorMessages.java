@@ -149,7 +149,8 @@ public class US94_VerifyErrorMessages {
 
     @AfterMethod
     public void tearDown() {
-          //     Driver.closeDriver();
+             Driver.closeDriver();
+             //
     }
 
 }
