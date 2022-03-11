@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -32,17 +33,18 @@ public class US92_SelectVehicle {
         // click login
         Driver.getDriver().findElement(By.xpath("//*[@id='_submit']")).click();
 
+
         WebElement fleetElement = Driver.getDriver().findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[1]/a/span"));
         fleetElement.click();
 
         // locate vehicle under fleet and click
         Driver.getDriver().findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[1]/div/div/ul/li[3]/a/span")).click();
         // There is no checkboxes in driver login
-        WebElement firstCheckBox = Driver.getDriver().findElement(By.xpath("//button[@class='btn btn-default btn-small dropdown-toggle']"));
+        //WebElement firstCheckBox = Driver.getDriver().findElement(By.xpath("//button[@class='btn btn-default btn-small dropdown-toggle']"));
 
 
-        Assert.assertFalse(firstCheckBox.isSelected());
-        System.out.println("firstCheckBox.isSelected() = " + firstCheckBox.isSelected());
+        //Assert.assertFalse(firstCheckBox.isSelected());
+        //System.out.println("firstCheckBox.isSelected() = " + firstCheckBox.isSelected());
 
 
     }
@@ -65,11 +67,17 @@ public class US92_SelectVehicle {
         // locate vehicle under fleet and click
         Driver.getDriver().findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[2]/div/div/ul/li[3]/a/span")).click();
         // There is no checkboxes in driver login
-        WebElement firstCheckBox = Driver.getDriver().findElement(By.xpath("//button[@class='btn btn-default btn-small dropdown-toggle']"));
+        WebElement headClick = Driver.getDriver().findElement(By.xpath("(//button[@class='btn btn-default btn-small dropdown-toggle'])[1]"));
+        //BrowserUtils.sleep(3);
+        //headClick.click();
+        //WebElement headClick2 = Driver.getDriver().findElement(By.xpath("/html/body/ul/li[1]/a"));
+        //headClick2.click();
 
+        //WebElement firstCheckBox = Driver.getDriver().findElement(By.xpath("//button[@class='btn btn-default btn-small dropdown-toggle']"));
+        //firstCheckBox.click();
 
-        Assert.assertFalse(firstCheckBox.isSelected());
-        System.out.println("firstCheckBox.isSelected() = " + firstCheckBox.isSelected());
+        Assert.assertFalse(headClick.isSelected());
+
 
 
     }
@@ -92,17 +100,17 @@ public class US92_SelectVehicle {
         // locate vehicle under fleet and click
         Driver.getDriver().findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[2]/div/div/ul/li[3]/a/span")).click();
         // There is no checkboxes in driver login
-        WebElement firstCheckBox = Driver.getDriver().findElement(By.xpath("//button[@class='btn btn-default btn-small dropdown-toggle']"));
+        WebElement headClick = Driver.getDriver().findElement(By.xpath("(//button[@class='btn btn-default btn-small dropdown-toggle'])[1]"));
 
 
-        Assert.assertFalse(firstCheckBox.isSelected());
-        System.out.println("firstCheckBox.isSelected() = " + firstCheckBox.isSelected());
+        Assert.assertFalse(headClick.isSelected());
+        System.out.println("firstCheckBox.isSelected() = " + headClick.isSelected());
 
 
     }
 
     @Test
-    public void TC2drivercheckAllChkboxes() {
+    public void TC2drivercheckAllChkboxes() { //
 
         Driver.getDriver().get(ConfigurationReader.getProperty("env1"));
         // pass username
@@ -114,16 +122,15 @@ public class US92_SelectVehicle {
         Driver.getDriver().findElement(By.xpath("//*[@id='_submit']")).click();
 
         WebElement fleetElement = Driver.getDriver().findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[1]/a/span"));
+        BrowserUtils.sleep(4);
         fleetElement.click();
 
         // locate vehicle under fleet and click
-        Driver.getDriver().findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[1]/div/div/ul/li[3]/a/span")).click();
+        WebElement element = Driver.getDriver().findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[1]/div/div/ul/li[3]/a/span"));
+        BrowserUtils.sleep(4);
+        element.click();
         // There is no checkboxes in driver login
-        WebElement firstCheckBox = Driver.getDriver().findElement(By.xpath("//button[@class='btn btn-default btn-small dropdown-toggle']"));
-        firstCheckBox.click();
 
-        Assert.assertTrue(firstCheckBox.isSelected());
-        System.out.println("firstCheckBox.isSelected() = " + firstCheckBox.isSelected());
 
 
     }
@@ -139,20 +146,28 @@ public class US92_SelectVehicle {
         Driver.getDriver().findElement(By.xpath("//*[@id=\"prependedInput2\"]")).sendKeys(ConfigurationReader.getProperty("password"));
         // click login
         Driver.getDriver().findElement(By.xpath("//*[@id='_submit']")).click();
-
+        BrowserUtils.sleep(10);
         WebElement fleetElement = Driver.getDriver().findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[2]/a/span"));
+        BrowserUtils.sleep(5);
         fleetElement.click();
 
         // locate vehicle under fleet and click
-        Driver.getDriver().findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[2]/div/div/ul/li[3]/a/span")).click();
-        // There is no checkboxes in driver login
-        WebElement firstCheckBox = Driver.getDriver().findElement(By.xpath("//button[@class='btn btn-default btn-small dropdown-toggle']/input[@type='checkbox']"));
-        firstCheckBox.click();
+        WebElement vehicleUnderFleet = Driver.getDriver().findElement(By.xpath("//span[@class='title title-level-2' and .='Vehicles' ]"));
+        BrowserUtils.sleep(4);
+        vehicleUnderFleet.click();
+
+
+        WebElement headClick = Driver.getDriver().findElement(By.xpath("(//button[@class='btn btn-default btn-small dropdown-toggle'])[1]"));
+        BrowserUtils.sleep(3);
+        headClick.click();
+        WebElement headClick2=Driver.getDriver().findElement(By.xpath("/html/body/ul/li[1]/a"));
+        // WebElement headClick2 = Driver.getDriver().findElement(By.xpath("/html/body/ul/li[1]/a"));
+        headClick2.click();
 
         //WebElement element = Driver.getDriver().findElement(By.xpath("/html/body/ul/li[1]/a"));
         //element.click();
-        Assert.assertTrue(firstCheckBox.isSelected());
-        System.out.println("firstCheckBox.isSelected() = " + firstCheckBox.isSelected());
+        Assert.assertTrue(headClick2.isEnabled());
+        System.out.println("firstCheckBox.isSelected() = " + headClick2.isSelected());
 
 
     }
@@ -179,15 +194,17 @@ public class US92_SelectVehicle {
         BrowserUtils.sleep(3);
         headClick.click();
         WebElement headClick2 = Driver.getDriver().findElement(By.xpath("/html/body/ul/li[1]/a"));
+        BrowserUtils.sleep(3);
         headClick2.click();
 
-        Assert.assertTrue(headClick2.isSelected());
+        Assert.assertTrue(headClick2.isEnabled());
         //System.out.println("firstCheckBox.isSelected() = " + headClick2.isSelected());
 
 
     }
+
     @Test
-    public void T3driverCheckAnyCar(){
+    public void T3driverCheckAnyCar() {
         Driver.getDriver().get(ConfigurationReader.getProperty("env1"));
         // pass username
         Driver.getDriver().findElement(By.xpath("//*[@id=\"prependedInput\"]")).sendKeys(ConfigurationReader.getProperty("driver_username"));
@@ -195,12 +212,18 @@ public class US92_SelectVehicle {
         //pass password
         Driver.getDriver().findElement(By.xpath("//*[@id=\"prependedInput2\"]")).sendKeys(ConfigurationReader.getProperty("password"));
 
-        Driver.getDriver().findElement(By.xpath("//*[@id='_submit']")).click();
+        Driver.getDriver().findElement(By.xpath("//*[@id='_submit']")).click(); // sign in
+        BrowserUtils.sleep(4);
         Driver.getDriver().findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[1]/a/span")).click();
-        Driver.getDriver().findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[1]/div/div/ul/li[3]/a/span")).click();
+
+        Driver.getDriver().findElement(By.xpath("//span[@class='title title-level-2' and .='Vehicles']")).click();
+        // There are no checkboxes in driver module when Fleet-> Vehicles
+
+
     }
+
     @Test
-    public void TC2salesManagerCheckAnyCar() {
+    public void TC3salesManagerCheckAnyCar() {
 
         Driver.getDriver().get("https://qa2.vytrack.com");
         // pass username
@@ -218,21 +241,47 @@ public class US92_SelectVehicle {
 
         // locate vehicle under fleet and click
         Driver.getDriver().findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[2]/div/div/ul/li[3]/a/span")).click();
-        BrowserUtils.sleep(5);
+        BrowserUtils.sleep(10);
         //Driver.getDriver().findElement(By.xpath("//*[@id=\"grid-custom-entity-grid-1481245719\"]/div[2]/div[2]/div[2]/div/table/thead/tr/th[1]/div/button/input")).click();
         //Until here
-        //WebElement headClick = Driver.getDriver().findElement(By.xpath("(//button[@class='btn btn-default btn-small dropdown-toggle'])[1]"));
-        //BrowserUtils.sleep(3);
-        //headClick.click();
-        //WebElement headClick2 = Driver.getDriver().findElement(By.xpath("/html/body/ul/li[1]/a"));
-        //headClick2.click();
-        for(int i=1; i<=25; i++){
-            WebElement checkBox = (WebElement) Driver.getDriver().findElement(By.xpath("(//input[@tabindex='-1'])["+i+"]"));
+
+        for (int i = 1; i <= 25; i++) {
+            WebElement checkBox = (WebElement) Driver.getDriver().findElement(By.xpath("(//input[@tabindex='-1'])[" + i + "]"));
             checkBox.click();
         }
 
-        //Select select=new Select(Driver.getDriver().findElement(By.xpath("//*[@id=\"grid-custom-entity-grid-1350276469\"]/div[2]/div[2]/div[2]/div/table/thead/tr/th[1]/div/button/input")));
 
+    }
 
+    @Test
+    public void TC3storeManagerCheckAnyCar() {
+
+        Driver.getDriver().get("https://qa2.vytrack.com");
+        // pass username
+        Driver.getDriver().findElement(By.xpath("//*[@id=\"prependedInput\"]")).sendKeys(ConfigurationReader.getProperty("store_manager_username"));
+        //pass password
+
+        Driver.getDriver().findElement(By.xpath("//*[@id=\"prependedInput2\"]")).sendKeys(ConfigurationReader.getProperty("password"));
+        // click login
+        Driver.getDriver().findElement(By.xpath("//*[@id='_submit']")).click();
+
+        // Fleet
+
+        WebElement fleetElement = Driver.getDriver().findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[2]/a/span"));
+        BrowserUtils.sleep(5);
+        Actions actions=new Actions(Driver.getDriver());
+        actions.moveToElement(fleetElement).perform();
+        //fleetElement.click();
+
+        //locate vehicle under fleet and click
+        Driver.getDriver().findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[2]/div/div/ul/li[3]/a/span")).click();
+        BrowserUtils.sleep(5);
+        //Driver.getDriver().findElement(By.xpath("//*[@id=\"grid-custom-entity-grid-1481245719\"]/div[2]/div[2]/div[2]/div/table/thead/tr/th[1]/div/button/input")).click();
+        //Until here
+
+        for (int i = 1; i <= 25; i++) {
+            WebElement checkBox = Driver.getDriver().findElement(By.xpath("(//input[@tabindex='-1'])[" + i + "]"));
+            checkBox.click();
+        }
     }
 }
