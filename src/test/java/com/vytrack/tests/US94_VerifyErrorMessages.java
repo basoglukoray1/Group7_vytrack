@@ -1,5 +1,6 @@
 package com.vytrack.tests;
 
+import com.vytrack.pages.loginPage;
 import com.vytrack.utilities.BrowserUtils;
 import com.vytrack.utilities.ConfigurationReader;
 import com.vytrack.utilities.Driver;
@@ -22,18 +23,12 @@ import java.util.Calendar;
 public class US94_VerifyErrorMessages {
 
 
+
     @BeforeMethod
     public void setUp() {
-        Driver.getDriver().get(ConfigurationReader.getProperty("env1"));
 
-        Driver.getDriver().findElement(By.id("prependedInput")).sendKeys(ConfigurationReader.getProperty("driver_username"));
-
-        Driver.getDriver().findElement(By.cssSelector("#prependedInput2")).sendKeys(ConfigurationReader.getProperty("password"));
-
-        Driver.getDriver().findElement(By.tagName("button")).click();
-
-        BrowserUtils.sleep(2);
-
+        loginPage loginAsDriver= new loginPage();
+        loginAsDriver.loginAsDriver();
 
     }
 
@@ -84,7 +79,7 @@ public class US94_VerifyErrorMessages {
 
 
 
-        //      #2  Testcase   "  Verify 2 error messges Displayed  x<1 || x>99 "
+        //      #2  Testcase   "  Verify 2 error messages Displayed  x<1 || x>99 "
 
 
 
@@ -150,6 +145,7 @@ public class US94_VerifyErrorMessages {
     @AfterMethod
     public void tearDown() {
              Driver.closeDriver();
+             //
     }
 
 }
