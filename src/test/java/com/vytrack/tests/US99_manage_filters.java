@@ -1,4 +1,4 @@
-package com.vytrack.tests.base;
+package com.vytrack.tests;
 
 import com.vytrack.utilities.BrowserUtils;
 import com.vytrack.utilities.ConfigurationReader;
