@@ -9,7 +9,9 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -29,10 +31,10 @@ public class US94_VerifyErrorMessages {
         loginPage loginAsDriver = new loginPage();
         loginAsDriver.loginAsDriver();
 
-
+        BrowserUtils.sleep(2);
 //      Locating the “Activities"
         WebElement activitiesBtn = Driver.getDriver().findElement(By.xpath("(//li[@class='dropdown dropdown-level-1'])[3]"));
-        BrowserUtils.sleep(2);
+
 
 
 
@@ -44,28 +46,28 @@ public class US94_VerifyErrorMessages {
 
 //      #2 click  “Activities" hover over it
         activitiesBtn.click();
-        BrowserUtils.sleep(2);
 
+        BrowserUtils.sleep(2);
         //      Locating "Calendar Events" Button and click
         WebElement calendarEventsBtn = Driver.getDriver().findElement(By.xpath("//span[.='Calendar Events']"));
         calendarEventsBtn.click();
 
+
+
         BrowserUtils.sleep(2);
-
-
 //      Verify "Calendar Events" displayed
 //      Assert.assertTrue(calendarEventsBtn.isDisplayed(), "Verification CalendarEvents Displayed is failed");
-
 
 
 //     Locating "Create Calendar Event" Button
         Driver.getDriver().findElement(By.xpath("//a[@title='Create Calendar event']")).click();
 
-
+        BrowserUtils.sleep(2);
 
 //     Locating "Repeat" checkbox
         WebElement repeatCheckbox = Driver.getDriver().findElement(By.xpath("//input[starts-with(@id,'recurrence-repeat-view')]"));
         repeatCheckbox.click();
+        BrowserUtils.sleep(2);
 
 //     Verify repeat checkbox is selected
         Assert.assertTrue(repeatCheckbox.isSelected(), "Repeat checkbox verification is failed");
@@ -82,10 +84,10 @@ public class US94_VerifyErrorMessages {
 //      User enter an INVALID integer (   x<1  )
         inputBox.sendKeys("-2" + Keys.ENTER);
 
-        BrowserUtils.sleep(2);
 
 
         WebElement firstErrorMessage = Driver.getDriver().findElement(By.xpath("//span[text()='The value have not to be less than 1.']"));
+
 
 //     Verify first Error Message "The value have not to be less than 1."
         Assert.assertTrue(firstErrorMessage.isDisplayed());
@@ -101,9 +103,6 @@ public class US94_VerifyErrorMessages {
 
 //      User enter an INVALID integer ( x>99 )
         inputBox.sendKeys("100" + Keys.ENTER);
-
-
-        BrowserUtils.sleep(2);
 
 
         WebElement secondErrorMessage = Driver.getDriver().findElement(By.xpath("//span[text()='The value have not to be more than 99.']"));
