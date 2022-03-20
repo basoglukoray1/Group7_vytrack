@@ -37,8 +37,10 @@ public class US96_VehicleOdometer {
 
         BrowserUtils.sleep(3);
         //Click the “Vehicle Odometers” under the Fleet
+        Actions actions=new Actions(Driver.getDriver());
         WebElement fleetOption=Driver.getDriver().findElement(By.xpath("(//span[@class='title title-level-1'])[2]"));
-        fleetOption.click();
+        actions.moveToElement(fleetOption).perform();
+
 
         WebElement vehicleOdometer=Driver.getDriver().findElement(By.xpath("//a[@href='/entity/Extend_Entity_VehiclesOdometer']"));
         vehicleOdometer.click();
@@ -59,8 +61,9 @@ public class US96_VehicleOdometer {
         VytrackUtils.loginAsDriver();
 
         //Click the “Vehicle Odometers” under the Fleet
+        Actions actions=new Actions(Driver.getDriver());
         WebElement fleetOption=Driver.getDriver().findElement(By.xpath("(//span[@class='title title-level-1'])[1]"));
-        fleetOption.click();
+        actions.moveToElement(fleetOption).perform();
 
         WebElement vehicleOdometer=Driver.getDriver().findElement(By.xpath("(//a[@href='/entity/Extend_Entity_VehiclesOdometer'])[3]"));
         vehicleOdometer.click();
@@ -79,8 +82,9 @@ public class US96_VehicleOdometer {
         VytrackUtils.loginAsDriver();
 
         //Click the “Vehicle Odometers” under the Fleet
+        Actions actions=new Actions(Driver.getDriver());
         WebElement fleetOption=Driver.getDriver().findElement(By.xpath("(//span[@class='title title-level-1'])[1]"));
-        fleetOption.click();
+        actions.moveToElement(fleetOption).perform();
 
         WebElement vehicleOdometer=Driver.getDriver().findElement(By.xpath("(//a[@href='/entity/Extend_Entity_VehiclesOdometer'])[3]"));
         vehicleOdometer.click();
